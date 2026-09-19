@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>La cabaña grande · el recorrido | Quinta Los Álamos</title>
+<script>document.documentElement.classList.add('js')</script>
+<meta name="description" content="La cabaña grande de Quinta Los Álamos, en San Pedro, ambiente por ambiente: comedor con hogar a leña, cocina industrial con horno, dormitorio para 4 y el parque compartido. $110.000 la noche.">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="La cabaña grande · el recorrido | Quinta Los Álamos">
+<meta property="og:description" content="Comedor con hogar a leña, cocina industrial con horno y dormitorio para 4, en un parque cerrado de San Pedro.">
+<meta property="og:image" content="https://seerystudio.github.io/los-alamos-web/assets/grande-portada-ancho.jpg">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="icon" href="assets/isotipo-noche.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300..700&family=Newsreader:ital,opsz,wght@0,6..72,200..500;1,6..72,200..500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blanco:#FFFFFF;
+  --bruma:#E3EADF;                 /* verde clarísimo: la superficie clara que no es blanca */
+  --hueso:#ECEDE4;
+  --tinta:#141F17;
+  --claro:#FFFFFF;
+  --noche:#141F17;    /* el único verde de la página (pedido del usuario, 2026-09-18) */
+  --linea:rgba(20,31,23,.13);
+  --linea-clara:rgba(255,255,255,.17);
+  --serif:'Newsreader',Georgia,'Times New Roman',serif;
+  --sans:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  /* las tres medidas que mandan en la referencia, calcadas */
+  --gap:8px;                       /* el gap de las galerías, ajustadísimo */
+  --lado:clamp(20px,4vw,40px);     /* su padding-global es 40 */
+  --maxw:1420px;                   /* su container-large */
+  --ease:cubic-bezier(.16,1,.3,1); /* el easing del indicador de la píldora */
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);background:var(--blanco);color:var(--tinta);
+  font-size:clamp(16px,1vw,17px);line-height:1.6;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+::selection{background:var(--noche);color:var(--claro)}
+:focus-visible{outline:2px solid var(--noche);outline-offset:3px}
+p{text-wrap:pretty}
+/* NADA DE ESQUINAS REDONDEADAS EN ESTA PÁGINA (decisión del usuario, 2026-09-16).
+   Es lo que le da el carácter seco a la referencia. Si se suma un elemento nuevo, va recto. */
+.pad{padding-inline:var(--lado)}
+.cont{max-width:var(--maxw);margin-inline:auto;padding-block:clamp(40px,6vw,64px)}
+.espacio{height:48px}
+.espacio-xl{height:65px}
+/* para cuando se llega con el ancla puesta y el salto lo hace el navegador, no el JS */
+section[id]{scroll-margin-top:90px}
+
+/* ---------- títulos: serif liviana, dos líneas con salto duro, interlínea de 1 ---------- */
+h1,h2,h3{font-family:var(--serif);font-weight:200;line-height:1;letter-spacing:-.015em}
+h2{font-size:clamp(2.4rem,5.4vw,3.93rem)}
+h3{font-size:clamp(1.3rem,1.8vw,1.5rem);font-weight:300;line-height:1.1}
+.salto{display:block}
+
+/* las letras entran una por una, como el letters-slide-up de la referencia.
+   La palabra entera va en un inline-block: si no, el renglón corta en cualquier letra. */
+.js .letras .pal{display:inline-block;white-space:nowrap}
+.js .letras .ch{display:inline-block;transform:translateY(100%);opacity:0}
+.js .letras.entro .ch{transform:none;opacity:1;
+  transition:transform .62s var(--ease),opacity .4s linear}
+@media(prefers-reduced-motion:reduce){
+  .js .letras .ch{transform:none;opacity:1;transition:none}
+}
+
+/* ---------- los íconos del equipamiento ---------- */
+.ico{flex:none;width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.2;
+  stroke-linecap:round;stroke-linejoin:round;opacity:.66}
+.sprite{position:absolute;width:0;height:0;overflow:hidden}
+
+/* ---------- LAS BANDAS VERDES (2026-09-16) ----------
+   La página venía corrida entera en blanco. Tres momentos oscuros la puntúan: la banda de
+   datos con sus dos cintas, el parque (que es verde de verdad: es el afuera) y el cierre con
+   el pie. La valija queda en bruma, el verde clarísimo, para que entre los dos oscuros haya
+   respiro sin volver al blanco. El resto de la página sigue blanca a propósito: el verde
+   puntúa, no tapa.
+   Sobre oscuro manda una sola tinta, --claro, como en el resto del proyecto. */
+.oscuro{background:var(--noche);color:var(--claro)}
+.oscuro h1,.oscuro h2,.oscuro h3{color:var(--claro)}
+.oscuro .lista li{border-bottom-color:var(--linea-clara)}
+.oscuro .marco{background:rgba(255,255,255,.06)}
+.oscuro .cifra span{opacity:.78}
+/* el botón lleno sobre verde va en menta: verde sobre verde no se despega del fondo */
+.oscuro .btn{background:var(--claro);color:var(--tinta)}
+.oscuro .btn-claro{background:transparent;color:var(--claro);border-color:rgba(255,255,255,.38)}
+@media(hover:hover){
+  .oscuro .btn:hover{background:var(--hueso)}
+  .oscuro .btn-claro:hover{background:rgba(255,255,255,.1)}
+}
+/* las cintas SON la banda, no están adentro de ella */
+.cinta.oscuro{border-color:var(--linea-clara)}
+.cinta.oscuro .tira span{color:var(--claro)}
+/* el filete de arriba separa secciones claras; entre dos oscuras sobra */
+.amb.oscuro{border-top-color:transparent}
+footer.oscuro{border-top-color:transparent}
+
+/* ---------- cabecera ---------- */
+.cab{position:fixed;inset:0 0 auto;z-index:50;background:rgba(255,255,255,.82);
+  border-bottom:1px solid var(--linea)}
+@supports(backdrop-filter:blur(8px)){.cab{background:rgba(255,255,255,.7);backdrop-filter:blur(12px)}}
+.cab .fila{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--lado);
+  display:flex;align-items:center;gap:20px;height:72px}
+.marca{font-family:var(--serif);font-weight:400;font-size:clamp(1.1rem,1.5vw,1.35rem);
+  text-decoration:none;line-height:1;white-space:nowrap}
+.marca em{display:block;font-size:.62em;font-weight:300}
+.volver{display:inline-flex;align-items:center;gap:.5em;font-size:.88rem;font-weight:500;
+  text-decoration:none;margin-left:auto;margin-right:clamp(10px,2vw,24px)}
+.volver i{font-style:normal;transition:transform .2s var(--ease)}
+@media(hover:hover){.volver:hover i{transform:translateX(-4px)}}
+@media(max-width:620px){.volver b{display:none}}
+
+/* ---------- botón: recto, sin radio ---------- */
+.btn{display:inline-flex;align-items:center;gap:.7em;min-height:48px;padding:.85em 1.5em;
+  border-radius:0;background:var(--noche);color:var(--claro);text-decoration:none;
+  font-weight:600;font-size:.92rem;white-space:nowrap;
+  transition:background .18s var(--ease),border-color .18s var(--ease),transform .12s var(--ease)}
+/* un solo verde: el hover no cambia de color, se aclara un poco */
+@media(hover:hover){.btn:hover{background:var(--noche);box-shadow:inset 0 0 0 999px rgba(255,255,255,.1)}}
+.btn:active{transform:translateY(1px) scale(.98)}
+.volver:focus-visible,.pildora a:focus-visible{outline-offset:-3px}
+.btn-chico{min-height:40px;padding:.55em 1.1em;font-size:.85rem}
+.btn-claro{background:var(--blanco);color:var(--tinta);border:1px solid var(--linea)}
+@media(hover:hover){.btn-claro:hover{background:var(--bruma)}}
+
+/* ---------- 1 · intro ---------- */
+.intro{padding-top:calc(72px + clamp(36px,5vw,70px))}
+.intro .grid{display:grid;grid-template-columns:1fr;gap:clamp(20px,3vw,36px)}
+@media(min-width:860px){.intro .grid{grid-template-columns:1fr 1fr;align-items:start}}
+.intro h1{font-size:clamp(2.7rem,6.6vw,5rem)}
+.intro .bajada{max-width:46ch;font-weight:300}
+.intro .bajada .precio{display:block;margin-top:1.2rem;font-family:var(--serif);font-weight:300;
+  font-size:clamp(1.8rem,3vw,2.4rem);line-height:1}
+.intro .bajada .precio small{font-family:var(--sans);font-size:.34em;font-weight:600;
+  letter-spacing:.18em;text-transform:uppercase;display:block;margin-top:.6em}
+
+/* ---------- 2 · la foto grande con la frase encima ---------- */
+.portada{position:relative;height:clamp(420px,76vh,760px);overflow:hidden;background:var(--bruma)}
+.portada .marco{position:absolute;inset:0}
+.portada picture{display:block;height:100%}
+/* celular: la apaisada en una portada vertical se veía al 31 %. Va un recorte propio 4:5
+   del mismo original cuadrado, y la portada toma esa proporción (2026-09-18) */
+@media(max-width:599px){.portada{height:auto;aspect-ratio:4/5}}
+.portada .marco img{width:100%;height:112%;object-fit:cover;
+  transform:translate3d(0,calc(var(--par,0) * -10%),0)}
+.portada .velo{position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(20,31,23,.72),rgba(20,31,23,.16) 55%,transparent)}
+.portada .texto{position:absolute;inset:auto 0 0;padding:clamp(24px,4vw,52px) var(--lado);
+  color:var(--claro);display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px}
+.portada h2{color:var(--claro);max-width:16ch;font-size:clamp(1.9rem,3.6vw,3rem)}
+/* el botón de la portada vive sobre el velo oscuro de la foto: va en menta, como los de las
+   bandas verdes. Verde sobre verde oscuro no se despega del fondo. */
+.portada .btn{background:var(--claro);color:var(--tinta)}
+@media(hover:hover){.portada .btn:hover{background:var(--hueso);box-shadow:none}}
+
+/* ---------- 3 · la banda de datos ---------- */
+.datos .grid{display:grid;grid-template-columns:1fr;gap:clamp(28px,4vw,48px)}
+@media(min-width:860px){.datos .grid{grid-template-columns:1fr 1fr;align-items:start}}
+.datos .cifras{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(18px,2.4vw,30px)}
+@media(min-width:560px){.datos .cifras{grid-template-columns:repeat(4,1fr)}}
+.datos .cifra b{display:block;font-family:var(--serif);font-weight:200;line-height:1;
+  font-size:clamp(2.2rem,3.6vw,3.2rem)}
+.datos .cifra span{display:block;margin-top:.5rem;font-size:.82rem;font-weight:500;
+  letter-spacing:.04em;opacity:.7}
+
+/* ---------- 4 · las cintas que corren ---------- */
+.cinta{overflow:hidden;padding-block:clamp(10px,1.6vw,18px);white-space:nowrap;
+  border-block:1px solid var(--linea)}
+.cinta + .cinta{border-top:0}
+.cinta .tira{display:inline-flex;gap:0;will-change:transform}
+.cinta .tira span{font-family:var(--serif);font-weight:200;font-size:clamp(1.4rem,2.6vw,2.2rem);
+  line-height:1.25;padding-inline:.5em;color:var(--noche)}
+.cinta .tira span.raya{opacity:.35}
+.js .cinta .tira{animation:corre 44s linear infinite}
+.js .cinta.rtl .tira{animation-direction:reverse}
+@keyframes corre{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.js .cinta .tira{animation:none}}
+
+/* ---------- 5 · EL AMBIENTE: encabezado en dos columnas + galería a todo el ancho ---------- */
+.amb{border-top:1px solid var(--linea)}
+.amb-enc{display:grid;grid-template-columns:1fr;gap:clamp(22px,3vw,34px)}
+@media(min-width:860px){.amb-enc{grid-template-columns:1fr 1fr;align-items:start}}
+/* sin max-width: el corte lo manda el salto duro del texto, como en la referencia */
+.amb-enc h2{max-width:none}
+.lista{list-style:none;display:grid;grid-template-columns:1fr;column-gap:clamp(16px,2vw,28px)}
+@media(min-width:520px){.lista{grid-template-columns:1fr 1fr}}
+/* la de una sola columna, para los bloques del dormitorio (su .room-inf-list._1col) */
+.lista.una{grid-template-columns:1fr}
+/* el ítem: el ícono ocupa el lugar de la sangría de 16 px que deja la referencia */
+.lista li{display:flex;align-items:flex-start;gap:12px;font-size:1rem;font-weight:400;
+  line-height:1.35;padding:0 0 16px;border-bottom:1px solid var(--linea);margin-bottom:16px}
+.lista li .ico{margin-top:.1em}
+.lista li small{display:block;margin-top:.25rem;font-size:.8rem;font-weight:300;opacity:.62}
+.js .lista li{opacity:0;transform:translateY(10px)}
+.js .lista.entro li{opacity:1;transform:none;transition:opacity .5s linear,transform .6s var(--ease)}
+.lista.entro li:nth-child(2){transition-delay:.05s}
+.lista.entro li:nth-child(3){transition-delay:.1s}
+.lista.entro li:nth-child(4){transition-delay:.15s}
+.lista.entro li:nth-child(5){transition-delay:.2s}
+.lista.entro li:nth-child(6){transition-delay:.25s}
+.lista.entro li:nth-child(n+7){transition-delay:.3s}
+@media(prefers-reduced-motion:reduce){.js .lista li{opacity:1;transform:none;transition:none}}
+
+/* la galería: cada foto entera, sin recorte (pedido del usuario, 2026-09-18). Antes era una grilla
+   escalonada de marcos apaisados y las fotos, que son verticales o cuadradas, se veían al 35-58 %.
+   Ahora cada marco crece según su proporción (--a = ancho/alto, escrita en el HTML): todas las de
+   una fila quedan a la misma altura y ninguna se corta. */
+.gal{display:flex;flex-wrap:wrap;gap:var(--gap);align-items:flex-start}
+.gal .par{display:contents}
+.gal .marco{flex:var(--a,1) 1 0;min-width:0;aspect-ratio:var(--a,1)}
+/* celular: la primera a lo ancho y las otras de a par */
+@media(max-width:859px){.gal > .marco:first-child,.gal > .par > .marco:first-child{flex-basis:100%}}
+/* una sola foto (el baño): no va a todo el ancho, que siendo vertical sería una torre */
+.gal.simple .marco{flex:0 0 auto;width:min(100%,calc(78svh * var(--a,1)))}
+/* el marco: esquinas rectas y la foto entera adentro */
+.marco{position:relative;overflow:hidden;background:var(--bruma);border-radius:0}
+.marco img{width:100%;height:100%;object-fit:cover}
+.marco figcaption{position:absolute;left:14px;bottom:12px;z-index:2;color:var(--claro);
+  font-size:.78rem;font-weight:500;text-shadow:0 1px 12px rgba(20,31,23,.7)}
+.js .marco{opacity:0;transform:translateY(20px)}
+.js .marco.entro{opacity:1;transform:none;transition:opacity .8s linear,transform .9s var(--ease)}
+@media(prefers-reduced-motion:reduce){.js .marco{opacity:1;transform:none;transition:none}}
+
+/* ---------- 6 · el dormitorio: bloques que alternan lado ---------- */
+.cuartos{display:grid;grid-template-columns:1fr;gap:var(--gap);align-items:start}
+@media(min-width:860px){.cuartos{grid-template-columns:repeat(3,1fr)}}
+.cuartos + .cuartos{margin-top:65px}
+/* la foto con su proporción, sin pasar del alto de la pantalla */
+.cuartos .marco{aspect-ratio:var(--a,1);width:min(100%,calc(82svh * var(--a,1)))}
+@media(min-width:860px){
+  .cuartos .ancho{grid-column:span 2}
+  /* pegada al lado del texto: a la derecha del texto arranca a la izquierda, y al revés */
+  .cuartos .marco:first-child{justify-self:end}
+  .cuartos .marco:last-child{justify-self:start}
+  /* el texto se alinea con el borde de arriba de la foto y no flota en el medio */
+  .cuarto-datos{align-self:start;padding-top:4px}
+}
+.cuarto-datos h3{margin-bottom:1.2rem}
+
+/* ---------- 7 · lo que está y lo que traés ---------- */
+.valija{background:var(--bruma)}
+.valija .grid{display:grid;grid-template-columns:1fr;gap:clamp(28px,4vw,56px)}
+@media(min-width:760px){.valija .grid{grid-template-columns:1fr 1fr}}
+.valija h2{font-size:clamp(1.7rem,2.8vw,2.4rem);margin-bottom:1.4rem}
+.valija ul{list-style:none}
+.valija li{display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--linea);
+  padding:.7em 0;font-size:1rem}
+.valija .aviso{margin-top:1.2rem;font-size:.88rem;font-weight:300}
+
+/* ---------- 8 · cierre ---------- */
+.cierre{text-align:center}
+.cierre .iso{width:60px;height:60px;margin:0 auto 24px}
+.cierre h2{max-width:14ch;margin-inline:auto}
+.cierre p{max-width:46ch;margin:1.2rem auto 0;font-weight:300}
+.cierre .botones{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:2rem}
+.contacto{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 34px;
+  margin-top:clamp(36px,5vw,56px);font-size:.92rem;font-weight:500}
+footer{border-top:1px solid var(--linea);font-size:.8rem;font-weight:300}
+footer .fila{max-width:var(--maxw);margin-inline:auto;padding:26px var(--lado) 104px;
+  display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+
+/* ---------- 9 · LA PÍLDORA (ahora rectangular) ----------
+   La zona ocupa todo el ancho y centra la barra. Con position:fixed + left:50% el navegador
+   calcula el ancho contra la mitad derecha de la pantalla y en celular queda cortada. */
+.pildora-zona{position:fixed;z-index:999;inset:auto 12px 16px;display:flex;justify-content:center;
+  pointer-events:none}
+.pildora{pointer-events:auto;max-width:100%;padding:4px;border:1px solid var(--linea);
+  border-radius:0;background:var(--bruma);overflow:hidden;
+  opacity:0;visibility:hidden;transition:opacity .4s var(--ease),visibility 0s linear .4s}
+.pildora.se-ve{opacity:1;visibility:visible;transition:opacity .4s var(--ease),visibility 0s}
+.pildora .riel{position:relative;display:flex;overflow-x:auto;scrollbar-width:none}
+.pildora .riel::-webkit-scrollbar{display:none}
+/* el indicador va detrás y se desliza hasta el botón activo */
+.pildora .indicador{position:absolute;top:0;left:0;height:100%;width:0;border-radius:0;
+  background:var(--noche);transition:transform 1.2s var(--ease),width 1.2s var(--ease);
+  pointer-events:none}
+.pildora a{position:relative;z-index:1;flex:none;height:52px;padding-inline:24px;
+  display:grid;place-items:center;overflow:hidden;text-decoration:none;
+  font-size:1.125rem;font-weight:500;line-height:52px;transition:color .5s var(--ease)}
+.pildora a[aria-current="true"]{color:var(--claro)}
+/* el roll: dos copias del texto, una debajo de la otra, que suben juntas */
+.pildora .rollo{display:block;position:relative;height:52px;overflow:hidden}
+.pildora .rollo span{display:block;height:52px;transition:transform .6s var(--ease)}
+.pildora a:hover .rollo span,
+.pildora a[aria-current="true"] .rollo span{transform:translateY(-52px)}
+@media(max-width:560px){.pildora a{padding-inline:16px;font-size:1rem}}
+@media(prefers-reduced-motion:reduce){
+  .pildora .indicador,.pildora .rollo span{transition:none}
+}
+</style>
+</head>
+<body>
+
+<svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-fuego" viewBox="0 0 24 24"><path d="M12 22a6 6 0 0 0 6-6c0-4.2-3.2-6.4-4.6-9.5-.6 2-1.4 3.1-2.4 4.1-.9-.9-1.4-1.9-1.4-3.1C7.2 10 6 12.6 6 16a6 6 0 0 0 6 6Z"/><path d="M12 22a2.6 2.6 0 0 0 2.6-2.6c0-1.8-2.6-3-2.6-3s-2.6 1.2-2.6 3A2.6 2.6 0 0 0 12 22Z"/></symbol>
+  <symbol id="i-estufa" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="10"/><path d="M7.5 5v10M12 5v10M16.5 5v10"/><path d="M8 18.5c0-1 1-1.2 1-2.2M12 18.5c0-1 1-1.2 1-2.2M16 18.5c0-1 1-1.2 1-2.2"/></symbol>
+  <symbol id="i-mesa" viewBox="0 0 24 24"><path d="M2 9h20"/><path d="M4.5 9v10M19.5 9v10"/><path d="M4 6h16"/></symbol>
+    <symbol id="i-mesa-redonda" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.8"/><path d="M9 2.9h6M9 21.1h6M2.9 9v6M21.1 9v6"/></symbol>
+    <symbol id="i-fogon" viewBox="0 0 24 24"><path d="M12 16a4.2 4.2 0 0 0 4.2-4.2c0-3.3-2.7-5-4-7.6-.5 1.7-1.1 2.6-2 3.4-.7-.7-1.1-1.5-1.1-2.5-1.7 2-1.3 4.4-1.3 6.7A4.2 4.2 0 0 0 12 16Z"/><path d="M2.5 21.3l19-3.6M2.5 17.7l19 3.6"/></symbol>
+  <symbol id="i-sillon" viewBox="0 0 24 24"><path d="M4 11.5V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3.5"/><path d="M4 11.5a2 2 0 0 1 2 2V17h12v-3.5a2 2 0 0 1 2-2"/><path d="M6.5 20v-3M17.5 20v-3"/></symbol>
+  <symbol id="i-sofa-cama" viewBox="0 0 24 24"><path d="M3 12V8.5a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2V12"/><path d="M3 12a2 2 0 0 1 2 2v3h11v-3a2 2 0 0 1 2-2"/><path d="M5.5 20v-3M15.5 20v-3"/><path d="M18.5 9.5h3M21.5 9.5l-2-2M21.5 9.5l-2 2"/></symbol>
+  <symbol id="i-tv" viewBox="0 0 24 24"><rect x="2.5" y="4.5" width="19" height="12.5"/><path d="M8.5 21h7M12 17v4"/></symbol>
+  <symbol id="i-wifi" viewBox="0 0 24 24"><path d="M2.5 8.8a14.5 14.5 0 0 1 19 0"/><path d="M5.8 12.3a10 10 0 0 1 12.4 0"/><path d="M8.9 15.7a5.6 5.6 0 0 1 6.2 0"/><circle cx="12" cy="19.3" r="1.1"/></symbol>
+  <symbol id="i-horno" viewBox="0 0 24 24"><rect x="3.5" y="3" width="17" height="18"/><path d="M3.5 9h17"/><circle cx="7.5" cy="6" r=".8"/><circle cx="10.5" cy="6" r=".8"/><rect x="6.5" y="12" width="11" height="6"/></symbol>
+  <symbol id="i-microondas" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14"/><rect x="5" y="8" width="10" height="8"/><path d="M18.5 8.5v3"/><circle cx="18.5" cy="15" r=".8"/></symbol>
+  <symbol id="i-heladera" viewBox="0 0 24 24"><rect x="5" y="2.5" width="14" height="19"/><path d="M5 9.5h14"/><path d="M8 5.5v2M8 12v3"/></symbol>
+  <symbol id="i-pava" viewBox="0 0 24 24"><path d="M4 12h13v5a3.5 3.5 0 0 1-3.5 3.5h-6A3.5 3.5 0 0 1 4 17v-5Z"/><path d="M17 14l3-2.5"/><path d="M8 12V9.5a2.5 2.5 0 0 1 5 0V12"/><path d="M10.5 7V5.5"/></symbol>
+  <symbol id="i-vajilla" viewBox="0 0 24 24"><path d="M6 3v6.5a2 2 0 0 0 4 0V3"/><path d="M8 3v6.5"/><path d="M8 11.5V21"/><path d="M16.5 3c1.7 0 2.5 2 2.5 5s-.8 4-2.5 4"/><path d="M16.5 12V21"/></symbol>
+  <symbol id="i-condimentos" viewBox="0 0 24 24"><path d="M7.5 9h4.5v12H7.5z"/><path d="M8.5 9V6.5h2.5V9"/><path d="M14.5 12H19v9h-4.5z"/><path d="M15.5 12V9.5H18V12"/></symbol>
+  <symbol id="i-ducha" viewBox="0 0 24 24"><path d="M9 3.5v3"/><path d="M4.5 10a4.5 4.5 0 0 1 9 0Z"/><path d="M13.5 6.5h3a3 3 0 0 1 3 3V21"/><path d="M6 13.5v1M9 15.5v1M12 13.5v1M7.5 18v1M10.5 18v1"/></symbol>
+  <symbol id="i-papel" viewBox="0 0 24 24"><path d="M4 7.5C4 5.6 5.8 4 8 4s4 1.6 4 3.5V19H4z"/><ellipse cx="8" cy="7.5" rx="4" ry="2"/><path d="M12 19h8v-8a3 3 0 0 0-3-3h-5"/></symbol>
+  <symbol id="i-toalla" viewBox="0 0 24 24"><path d="M6.5 3h10a2 2 0 0 1 2 2v16h-10a2 2 0 0 1-2-2z"/><path d="M6.5 7.5h12"/><path d="M4 21h2.5"/></symbol>
+  <symbol id="i-secador" viewBox="0 0 24 24"><path d="M3.5 6.5h8.5a4 4 0 0 1 0 8H3.5z"/><path d="M8 14.5V20"/><path d="M16.5 8.5h4M16.5 12.5h3"/><path d="M4 4l16 16"/></symbol>
+  <symbol id="i-cama-doble" viewBox="0 0 24 24"><path d="M2.5 18v-6h19v6"/><path d="M2.5 20.5V18M21.5 20.5V18"/><path d="M5 12V8.5h6V12M13 12V8.5h6V12"/></symbol>
+  <symbol id="i-cama-simple" viewBox="0 0 24 24"><path d="M4.5 18v-6h15v6"/><path d="M4.5 20.5V18M19.5 20.5V18"/><path d="M7 12V8.5h10V12"/></symbol>
+  <symbol id="i-placard" viewBox="0 0 24 24"><rect x="4.5" y="2.5" width="15" height="19"/><path d="M12 2.5v19"/><circle cx="10.4" cy="12" r=".7"/><circle cx="13.6" cy="12" r=".7"/></symbol>
+  <symbol id="i-aire" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="8"/><path d="M5.5 10h13"/><path d="M7 17c0 1.2 1.2 1.2 1.2 2.5M12 17c0 1.2 1.2 1.2 1.2 2.5M17 17c0 1.2 1.2 1.2 1.2 2.5"/></symbol>
+  <symbol id="i-almohada" viewBox="0 0 24 24"><path d="M3 9.5c0-1.4 1.1-2.5 2.5-2.5h13c1.4 0 2.5 1.1 2.5 2.5v5c0 1.4-1.1 2.5-2.5 2.5h-13A2.5 2.5 0 0 1 3 14.5z"/><path d="M7 7v10"/></symbol>
+  <symbol id="i-personas" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3 20.5a6 6 0 0 1 12 0"/><path d="M16 5.2a3.2 3.2 0 0 1 0 6.4"/><path d="M17.5 20.5a6 6 0 0 0-1.8-4.3"/></symbol>
+  <symbol id="i-galeria" viewBox="0 0 24 24"><path d="M2 9l10-5.5L22 9"/><path d="M5 9v11M12 9v11M19 9v11"/><path d="M2.5 20.5h19"/></symbol>
+  <symbol id="i-pileta" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14"/><path d="M5 10.2c1.6 0 1.6-1.3 3.2-1.3s1.6 1.3 3.3 1.3 1.6-1.3 3.2-1.3 1.7 1.3 3.3 1.3"/><path d="M5 14.8c1.6 0 1.6-1.3 3.2-1.3s1.6 1.3 3.3 1.3 1.6-1.3 3.2-1.3 1.7 1.3 3.3 1.3"/></symbol>
+  <symbol id="i-parrilla" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="8.5"/><path d="M7.5 6v8.5M12 6v8.5M16.5 6v8.5"/><path d="M6.5 14.5V20M17.5 14.5V20"/></symbol>
+  <symbol id="i-utensilios" viewBox="0 0 24 24"><path d="M5.5 3v7M9 3v7"/><path d="M7.2 10v11"/><path d="M14.5 3.5h5V10h-5z"/><path d="M17 10v11"/></symbol>
+  <symbol id="i-luz" viewBox="0 0 24 24"><path d="M9.5 18.5h5"/><path d="M10.5 21h3"/><path d="M12 2.5a6 6 0 0 0-3.2 11.1v2.4h6.4v-2.4A6 6 0 0 0 12 2.5Z"/></symbol>
+  <symbol id="i-auto" viewBox="0 0 24 24"><path d="M3 13.5l1.8-5A2.5 2.5 0 0 1 7.2 7h9.6a2.5 2.5 0 0 1 2.4 1.5l1.8 5"/><rect x="3" y="13.5" width="18" height="5"/><circle cx="7" cy="18.5" r="1.6"/><circle cx="17" cy="18.5" r="1.6"/></symbol>
+  <symbol id="i-pelota" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3c-3 2.6-3 15.4 0 18"/><path d="M12 3c3 2.6 3 15.4 0 18"/><path d="M3.3 12h17.4"/></symbol>
+  <symbol id="i-sabanas" viewBox="0 0 24 24"><path d="M3 20V6.5C3 5.1 4.1 4 5.5 4h13C19.9 4 21 5.1 21 6.5V20"/><path d="M3 20h18"/><path d="M3 9.5h18"/></symbol>
+</svg>
+
+<header class="cab">
+  <div class="fila">
+    <a class="marca" href="index.html"><em>Quinta</em>LOS ÁLAMOS</a>
+    <a class="volver" href="index.html#cabanas"><i aria-hidden="true">←</i> Volver <b>a las dos cabañas</b></a>
+    <a class="btn btn-chico" href="https://wa.me/5493329471000?text=Hola%20Sandra%2C%20quer%C3%ADa%20consultar%20por%20la%20caba%C3%B1a%20grande" rel="noopener">Consultar</a>
+  </div>
+</header>
+
+<main>
+
+<section class="pad intro">
+  <div class="cont">
+    <div class="grid">
+      <h1 class="letras">La cabaña grande<span class="salto">de Los Álamos</span></h1>
+      <div class="bajada">
+        <p>Para cuatro personas, en un parque cerrado de San Pedro, a dos horas de Buenos Aires y de Rosario. Es la única de las dos con hogar a leña, horno y freezer: por diez mil pesos más que la chica, cambia bastante el invierno.</p>
+        <p class="precio">$110.000 <small>por noche</small></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="portada" data-par>
+  <div class="marco"><picture><source media="(max-width:599px)" srcset="assets/grande-portada.jpg" width="1000" height="1250"><img src="assets/grande-portada-ancho.jpg" alt="El living de la cabaña grande, con los sillones, la TV y el hogar a leña" fetchpriority="high" width="1800" height="1012"></picture></div>
+  <div class="velo" aria-hidden="true"></div>
+  <div class="texto">
+    <h2 class="letras">Prendés el hogar<span class="salto">y ya está.</span></h2>
+    <a class="btn" href="https://wa.me/5493329471000?text=Hola%20Sandra%2C%20quer%C3%ADa%20consultar%20disponibilidad%20de%20la%20caba%C3%B1a%20grande" rel="noopener">Consultar disponibilidad</a>
+  </div>
+</section>
+
+<section class="pad datos oscuro">
+  <div class="cont">
+    <div class="grid">
+      <h2 class="letras">Todo lo que hace falta<span class="salto">y nada de más.</span></h2>
+      <div class="cifras">
+        <div class="cifra"><b>4</b><span>personas</span></div>
+        <div class="cifra"><b>3</b><span>camas y un sofá cama</span></div>
+        <div class="cifra"><b>6</b><span>lugares en la mesa</span></div>
+        <div class="cifra"><b>2 h</b><span>de Buenos Aires</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cinta oscuro" aria-hidden="true">
+  <div class="tira">
+    <span>el hogar encendido</span><span class="raya">/</span><span>asado sin apuro</span><span class="raya">/</span><span>la pileta a las cinco</span><span class="raya">/</span><span>mate en la galería</span><span class="raya">/</span>
+    <span>el hogar encendido</span><span class="raya">/</span><span>asado sin apuro</span><span class="raya">/</span><span>la pileta a las cinco</span><span class="raya">/</span><span>mate en la galería</span><span class="raya">/</span>
+  </div>
+</div>
+<div class="cinta rtl oscuro" aria-hidden="true">
+  <div class="tira">
+    <span>el perro suelto en el pasto</span><span class="raya">/</span><span>fogón al atardecer</span><span class="raya">/</span><span>silencio desde las doce</span><span class="raya">/</span><span>el portón cerrado</span><span class="raya">/</span>
+    <span>el perro suelto en el pasto</span><span class="raya">/</span><span>fogón al atardecer</span><span class="raya">/</span><span>silencio desde las doce</span><span class="raya">/</span><span>el portón cerrado</span><span class="raya">/</span>
+  </div>
+</div>
+
+<section class="pad amb" id="adentro">
+  <div class="cont">
+    <div class="amb-enc">
+      <h2 class="letras">El comedor,<span class="salto">con hogar.</span></h2>
+      <ul class="lista">
+        <li><svg class="ico" aria-hidden="true"><use href="#i-fuego"></use></svg><span>Hogar a leña <small>solo en esta cabaña</small></span></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-estufa"></use></svg><span>Estufa de pared a gas</span></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-mesa"></use></svg><span>Mesa para 6</span></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-sillon"></use></svg><span>Tres sillones</span></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-sofa-cama"></use></svg><span>Sofá cama</span></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-tv"></use></svg><span>TV digital</span></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-wifi"></use></svg><span>Wifi</span></li>
+      </ul>
+    </div>
+    <div class="espacio"></div>
+    <div class="gal">
+      <div class="par">
+        <figure class="marco" data-par style="--a:1"><img src="assets/grande-mesa.jpg" alt="La mesa del comedor, para seis, con el camino puesto" loading="lazy" width="1200" height="1200"></figure>
+        <figure class="marco" data-par style="--a:1"><img src="assets/grande-sillones.jpg" alt="Los sillones del comedor, con la TV y el hogar a leña al costado" loading="lazy" width="1200" height="1200"></figure>
+      </div>
+            <figure class="marco alta" data-par style="--a:1"><img src="assets/grande-hogar.jpg" alt="El hogar a leña del comedor" loading="lazy" width="1200" height="1200"><figcaption>El hogar a leña</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="pad amb">
+  <div class="cont">
+    <div class="amb-enc">
+      <h2 class="letras">Cocina industrial,<span class="salto">con horno.</span></h2>
+      <ul class="lista">
+        <li><svg class="ico" aria-hidden="true"><use href="#i-horno"></use></svg><span>Cocina industrial con horno</span></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-heladera"></use></svg><span>Heladera con freezer</span></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-pava"></use></svg><span>Pava eléctrica</span></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-pava"></use></svg><span>Pava común</span></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-vajilla"></use></svg><span>Vajilla completa</span></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-condimentos"></use></svg><span>Condimentos <small>los traés vos</small></span></li>
+      </ul>
+    </div>
+    <div class="espacio"></div>
+    <div class="gal">
+      <div class="par">
+                <figure class="marco" data-par style="--a:0.75"><img src="assets/grande-cocina.jpg" alt="La cocina industrial con horno y campana" loading="lazy" width="1000" height="1333"></figure>
+                <figure class="marco" data-par style="--a:1"><img src="assets/grande-cocina-2.jpg" alt="La cocina entera, con el horno y la heladera con freezer" loading="lazy" width="1200" height="1200"></figure>
+      </div>
+            <figure class="marco alta" data-par style="--a:0.75"><img src="assets/alacena.jpg" alt="La alacena con la vajilla" loading="lazy" width="1000" height="1333"><figcaption>La vajilla, completa</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="pad amb">
+  <div class="cont">
+    <div class="amb-enc">
+      <h2 class="letras">El baño.</h2>
+      <ul class="lista">
+        <li><svg class="ico" aria-hidden="true"><use href="#i-ducha"></use></svg><span>Baño completo</span></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-papel"></use></svg><span>Papel higiénico puesto</span></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-toalla"></use></svg><span>Toallones <small>no incluidos, traelos</small></span></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-secador"></use></svg><span>Secador de pelo <small>no hay</small></span></li>
+      </ul>
+    </div>
+    <div class="espacio"></div>
+        <div class="gal simple">
+      <figure class="marco" data-par style="--a:0.75"><img src="assets/banio.jpg" alt="El baño de la cabaña" loading="lazy" width="1000" height="1333"></figure>
+    </div>
+  </div>
+</section>
+
+<section class="pad amb" id="dormitorio">
+  <div class="cont">
+    <h2 class="letras">Un dormitorio,<span class="salto">cuatro lugares.</span></h2>
+    <div class="espacio"></div>
+
+    <div class="cuartos">
+      <div class="cuarto-datos">
+        <h3>En el cuarto</h3>
+        <ul class="lista una">
+          <li><svg class="ico" aria-hidden="true"><use href="#i-cama-doble"></use></svg><span>Cama matrimonial</span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-cama-simple"></use></svg><span>Cama de una plaza</span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-placard"></use></svg><span>Placard</span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-aire"></use></svg><span>Aire acondicionado <small>solo acá</small></span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-sabanas"></use></svg><span>Sábanas, frazadas y almohadas</span></li>
+        </ul>
+      </div>
+      <figure class="marco ancho alta" data-par style="--a:1"><img src="assets/grande-habitacion.jpg" alt="El dormitorio, con la cama matrimonial y la de una plaza" loading="lazy" width="1200" height="1200"></figure>
+    </div>
+
+        <div class="cuartos">
+      <figure class="marco ancho alta" data-par style="--a:0.75"><img src="assets/grande-sofacama.jpg" alt="El sofá cama del comedor, abierto" loading="lazy" width="1000" height="1333"></figure>
+      <div class="cuarto-datos">
+        <h3>Y el cuarto lugar</h3>
+        <ul class="lista una">
+          <li><svg class="ico" aria-hidden="true"><use href="#i-sofa-cama"></use></svg><span>Sofá cama en el comedor</span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-almohada"></use></svg><span>Se arma y se desarma</span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-personas"></use></svg><span>Capacidad estricta <small>cuatro personas, no más</small></span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pad amb oscuro" id="parque">
+  <div class="cont">
+    <div class="amb-enc">
+      <h2 class="letras">Y afuera,<span class="salto">el parque.</span></h2>
+      <ul class="lista">
+        <li><svg class="ico" aria-hidden="true"><use href="#i-galeria"></use></svg><span>Galería techada</span></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-pileta"></use></svg><span>Pileta de 7,60 × 3,70 m <small>solo en verano</small></span></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-parrilla"></use></svg><span>Quincho techado con parrilla</span></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-utensilios"></use></svg><span>Herramientas de asado</span></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-fogon"></use></svg><span>Fogonero en el parque</span></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-mesa-redonda"></use></svg><span>Mesa redonda de mosaico</span></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-luz"></use></svg><span>Luces en el parque</span></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-wifi"></use></svg><span>Wifi en todo el predio</span></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-auto"></use></svg><span>Estacionamiento adentro</span></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-pelota"></use></svg><span>Juegos de mesa y pelota</span></li>
+      </ul>
+    </div>
+    <div class="espacio"></div>
+        <div class="gal">
+      <figure class="marco" data-par style="--a:0.75"><img src="assets/pileta-sol.jpg" alt="La pileta del predio, desde la galería" loading="lazy" width="960" height="1280"></figure>
+      <figure class="marco" data-par style="--a:1"><img src="assets/parrilla-frente.jpg" alt="La parrilla de ladrillo del quincho" loading="lazy" width="1200" height="1200"><figcaption>El quincho</figcaption></figure>
+      <figure class="marco" data-par style="--a:1"><img src="assets/fogonero.jpg" alt="El fogonero del parque, de noche" loading="lazy" width="1200" height="1200"><figcaption>El fogonero</figcaption></figure>
+    </div>
+    <p class="aviso" style="margin-top:2rem;font-weight:300;max-width:52ch">Todo esto es del predio y se comparte con la otra cabaña. Si tomás la quinta completa, queda solo para tu grupo.</p>
+  </div>
+</section>
+
+<section class="pad valija">
+  <div class="cont">
+    <div class="grid">
+      <div>
+        <h2 class="letras">No lo traigas.</h2>
+        <ul>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-sabanas"></use></svg>Sábanas</li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-almohada"></use></svg>Frazadas y almohadas</li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-papel"></use></svg>Papel higiénico</li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-vajilla"></use></svg>Vajilla completa</li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="letras">Acordate.</h2>
+        <ul>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-toalla"></use></svg>Toallones</li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-fogon"></use></svg>Leña o carbón</li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-condimentos"></use></svg>Condimentos</li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-secador"></use></svg>Secador de pelo</li>
+        </ul>
+        <p class="aviso">La limpieza se hace antes y después de tu estadía, no durante.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pad cierre oscuro">
+  <div class="cont">
+    <img class="iso" src="assets/isotipo-claro.svg" alt="" width="60" height="60">
+    <h2 class="letras">Esta es la grande.</h2>
+    <p>$110.000 la noche, mínimo dos noches y tres en los fines de semana largos. Se reserva con el 50% por transferencia y el resto en efectivo al llegar.</p>
+    <div class="botones">
+      <a class="btn" href="https://wa.me/5493329471000?text=Hola%20Sandra%2C%20quer%C3%ADa%20consultar%20por%20la%20caba%C3%B1a%20grande%20para%20estas%20fechas%3A%20" rel="noopener">Consultar fechas</a>
+      <a class="btn btn-claro" href="cabana-chica.html">Ver la cabaña chica</a>
+    </div>
+    <div class="contacto">
+      <a href="tel:+543329471000">WhatsApp 3329 471000</a>
+      <a href="https://www.instagram.com/quintalosalamos.sp/" rel="noopener">@quintalosalamos.sp</a>
+      <a href="https://maps.app.goo.gl/ykBXCzbsvCerjnWu6" rel="noopener">Lucio Mansilla 1135, San Pedro</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="oscuro">
+  <div class="fila"><span>© 2026 Quinta Los Álamos</span><span>Cabañas en San Pedro, Buenos Aires</span></div>
+</footer>
+
+<div class="pildora-zona">
+  <nav class="pildora" id="pildora" aria-label="Partes de la cabaña">
+    <div class="riel" id="riel">
+      <div class="indicador" id="indicador" aria-hidden="true"></div>
+      <a href="#adentro"><span class="rollo"><span>Adentro</span><span>Adentro</span></span></a>
+      <a href="#dormitorio"><span class="rollo"><span>Dormitorio</span><span>Dormitorio</span></span></a>
+      <a href="#parque"><span class="rollo"><span>Parque</span><span>Parque</span></span></a>
+    </div>
+  </nav>
+</div>
+
+<script>
+(function () {
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var html = document.documentElement;
+  if (!('IntersectionObserver' in window)) { html.classList.remove('js'); return; }
+
+  /* ---------- títulos letra por letra ----------
+     Se corta por palabra y recién adentro por letra; el h2 lleva su propio aria-label para que
+     el lector de pantalla siga leyendo la frase entera. */
+  [].forEach.call(document.querySelectorAll('.letras'), function (t) {
+    if (reduce) return;
+    t.setAttribute('aria-label', t.textContent.trim().replace(/\s+/g, ' '));
+    var i = 0;
+    function partir(nodo) {
+      [].slice.call(nodo.childNodes).forEach(function (n) {
+        if (n.nodeType === 3) {
+          var frag = document.createDocumentFragment();
+          n.textContent.split(/(\s+)/).forEach(function (trozo) {
+            if (!trozo) return;
+            if (/^\s+$/.test(trozo)) { frag.appendChild(document.createTextNode(' ')); return; }
+            var pal = document.createElement('span');
+            pal.className = 'pal';
+            pal.setAttribute('aria-hidden', 'true');
+            trozo.split('').forEach(function (c) {
+              var s = document.createElement('span');
+              s.className = 'ch';
+              s.textContent = c;
+              s.style.transitionDelay = (i++ * 14) + 'ms';
+              pal.appendChild(s);
+            });
+            frag.appendChild(pal);
+          });
+          nodo.replaceChild(frag, n);
+        } else if (n.nodeType === 1) partir(n);
+      });
+    }
+    partir(t);
+  });
+
+  var verTitulo = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('entro');
+      verTitulo.unobserve(e.target);
+    });
+  }, { threshold: .3, rootMargin: '0px 0px -6% 0px' });
+  [].forEach.call(document.querySelectorAll('.letras'), function (t) { verTitulo.observe(t); });
+
+  /* ---------- listas y marcos ---------- */
+  var entrar = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('entro');
+      entrar.unobserve(e.target);
+    });
+  }, { threshold: .15, rootMargin: '0px 0px -6% 0px' });
+  [].forEach.call(document.querySelectorAll('.lista, .marco'), function (n) { entrar.observe(n); });
+
+  /* ---------- el parallax de las fotos ----------
+     La imagen mide 112% del marco y se mueve adentro según dónde está el marco en la pantalla:
+     --par va de 0 (entrando por abajo) a 1 (saliendo por arriba). Solo para lo visible. */
+  var conPar = [].slice.call(document.querySelectorAll('[data-par]'));
+  var visibles = [];
+  if (!reduce) {
+    var obsPar = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        var i = visibles.indexOf(e.target);
+        if (e.isIntersecting && i < 0) visibles.push(e.target);
+        else if (!e.isIntersecting && i >= 0) visibles.splice(i, 1);
+      });
+      mover();
+    }, { rootMargin: '10% 0px 10% 0px' });
+    conPar.forEach(function (n) { obsPar.observe(n); });
+
+    var pedido = false;
+    function mover() {
+      visibles.forEach(function (n) {
+        var r = n.getBoundingClientRect();
+        var p = (innerHeight - r.top) / (innerHeight + r.height);
+        n.style.setProperty('--par', Math.max(0, Math.min(1, p)).toFixed(4));
+      });
+    }
+    addEventListener('scroll', function () {
+      if (pedido) return;
+      pedido = true;
+      requestAnimationFrame(function () { pedido = false; mover(); });
+    }, { passive: true });
+    addEventListener('resize', mover);
+    mover();
+  }
+
+  /* ---------- la barra de partes ----------
+     Aparece al entrar al recorrido y desaparece al salir. El indicador se desliza hasta la parte
+     que estás mirando; el texto rota solo, por CSS. */
+  var pildora = document.getElementById('pildora');
+  var riel = document.getElementById('riel');
+  var ind = document.getElementById('indicador');
+  var enlaces = [].slice.call(riel.querySelectorAll('a'));
+  var partes = enlaces.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+  var activo = -1;
+
+  function colocar() {
+    if (activo < 0) return;
+    var a = enlaces[activo];
+    ind.style.width = a.offsetWidth + 'px';
+    ind.style.transform = 'translateX(' + a.offsetLeft + 'px)';
+  }
+
+  function marcar(i) {
+    if (i === activo || i < 0) return;
+    activo = i;
+    enlaces.forEach(function (a, k) {
+      if (k === i) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
+    });
+    colocar();
+    var a = enlaces[i];
+    if (riel.scrollWidth > riel.clientWidth) {
+      riel.scrollTo({ left: a.offsetLeft - (riel.clientWidth - a.offsetWidth) / 2, behavior: reduce ? 'auto' : 'smooth' });
+    }
+  }
+
+  var ratios = partes.map(function () { return 0; });
+  var obsParte = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      var i = partes.indexOf(e.target);
+      if (i >= 0) ratios[i] = e.isIntersecting ? e.intersectionRatio : 0;
+    });
+    var max = 0, mejor = -1;
+    ratios.forEach(function (v, i) { if (v > max) { max = v; mejor = i; } });
+    marcar(mejor);
+  }, { threshold: [0, .08, .2, .4, .6], rootMargin: '-80px 0px -30% 0px' });
+  partes.forEach(function (s) { if (s) obsParte.observe(s); });
+
+  /* se ve solo mientras dura el recorrido: antes y después estorba */
+  var primera = partes[0], ultima = partes[partes.length - 1];
+  function verBarra() {
+    var a = primera.getBoundingClientRect(), b = ultima.getBoundingClientRect();
+    pildora.classList.toggle('se-ve', a.top < innerHeight * .5 && b.bottom > innerHeight * .2);
+  }
+  addEventListener('scroll', verBarra, { passive: true });
+  addEventListener('resize', function () { verBarra(); colocar(); });
+  verBarra();
+
+  /* las anclas se deslizan con el alto de la cabecera descontado */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (!a) return;
+    var dest = document.getElementById(a.getAttribute('href').slice(1));
+    if (!dest) return;
+    e.preventDefault();
+    scrollTo({ top: dest.getBoundingClientRect().top + scrollY - 80, behavior: reduce ? 'auto' : 'smooth' });
+  });
+})();
+</script>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Accommodation","name":"La cabaña grande · Quinta Los Álamos","description":"Cabaña para hasta 4 personas en Quinta Los Álamos, San Pedro, provincia de Buenos Aires. Comedor con hogar a leña, cocina industrial con horno, heladera con freezer, dormitorio con cama matrimonial y de una plaza, y parque compartido con pileta, quincho y fogonero.","occupancy":{"@type":"QuantitativeValue","maxValue":4,"unitCode":"C62"},"numberOfRooms":1,"petsAllowed":true,"address":{"@type":"PostalAddress","streetAddress":"Lucio Mansilla 1135","postalCode":"B2930","addressLocality":"San Pedro","addressRegion":"Buenos Aires","addressCountry":"AR"},"amenityFeature":[
+  {"@type":"LocationFeatureSpecification","name":"Hogar a leña","value":true},
+  {"@type":"LocationFeatureSpecification","name":"Cocina industrial con horno","value":true},
+  {"@type":"LocationFeatureSpecification","name":"Heladera con freezer","value":true},
+  {"@type":"LocationFeatureSpecification","name":"Aire acondicionado en el dormitorio","value":true},
+  {"@type":"LocationFeatureSpecification","name":"Wifi","value":true},
+  {"@type":"LocationFeatureSpecification","name":"Pileta compartida","value":true},
+  {"@type":"LocationFeatureSpecification","name":"Quincho con parrilla","value":true},
+  {"@type":"LocationFeatureSpecification","name":"Estacionamiento dentro del predio","value":true}]}
+</script>
+
+</body>
+</html>
